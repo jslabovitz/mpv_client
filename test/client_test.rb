@@ -30,7 +30,7 @@ class MPVClient
       version = @mpv.command('get_version')
       assert { version != nil }
       version = @mpv.unpack_version(version)
-      assert { version == [1, 101] }
+      assert { version == [1, 109] }
     end
 
     def test_client_name

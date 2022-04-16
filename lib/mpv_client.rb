@@ -1,8 +1,6 @@
 require 'json'
 require 'socket'
 
-require 'mpv_client/version'
-
 class MPVClient
 
   class Error < StandardError; end
