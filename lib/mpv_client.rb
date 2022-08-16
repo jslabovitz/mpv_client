@@ -34,7 +34,7 @@ class MPVClient
     raise Error, "mpv failed to start" unless @pid > 0
     until File.exist?(@socket_path)
 # ;;puts "[sleeping until socket path exists]"
-      sleep 0.01
+      sleep 0.1
       if Process.waitpid(@pid, Process::WNOHANG)
         raise Error, "mpv failed to start (exit status #{$?.exitstatus.inspect})"
       end
