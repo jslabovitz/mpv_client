@@ -54,6 +54,7 @@ class MPVClient
   end
 
   def command(*args)
+# ;;puts "COMMAND: #{args.inspect}"
     responded = false
     result = nil
     @requests[@request_id] = proc do |response|
