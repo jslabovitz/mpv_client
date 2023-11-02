@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name          = 'mpv_client'
-  s.version       = '0.2'
+  s.version       = '0.3'
   s.summary       = %q{Ruby bindings to the MPV media player, via MPV's JSON-IPC protocol.}
   s.description   = %q{
     MPVClient provides Ruby bindings to the MPV media player, via MPV's JSON-IPC protocol.
