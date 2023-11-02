@@ -8,12 +8,15 @@ class MPVClient
   attr_accessor :socket
 
   def initialize(mpv_params={})
-    @mpv_params = mpv_params
     @requests = {}
     @property_observers = {}
     @event_observers = {}
     @request_id = @property_observer_id = 0
     @socket_path = '/tmp/mpv_socket'
+    @mpv_params = {
+      'idle' => 'yes',
+      'input-ipc-server' => @socket_path,
+    }.merge(mpv_params).compact
     start
     register_event('property-change') do |event|
       observer = @property_observers[event['name']] \
@@ -23,11 +26,7 @@ class MPVClient
   end
 
   def start
-    cmd_options = @mpv_params.merge(
-      'no-terminal' => '',
-      'idle' => 'yes',
-      'input-ipc-server' => @socket_path)
-    cmd = ['mpv'] + cmd_options.reject { |k, v| v.nil? }.map { |k, v| "--#{k}=#{v}" }
+    cmd = ['mpv'] + @mpv_params.map { |k, v| "--#{k}" + (v.to_s.empty? ? '' : "=#{v}") }
 # ;;pp(cmd: cmd)
     File.unlink(@socket_path) if File.exist?(@socket_path)
     @pid = Process.spawn(*cmd)
