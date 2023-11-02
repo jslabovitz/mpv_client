@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'json', '~> 2.6'
 
-  s.add_development_dependency 'rake', '~> 13.0'
-  s.add_development_dependency 'minitest', '~> 5.18'
+  s.add_development_dependency 'rake', '~> 13.1'
+  s.add_development_dependency 'minitest', '~> 5.20'
   s.add_development_dependency 'minitest-power_assert', '~> 0.3'
 end
